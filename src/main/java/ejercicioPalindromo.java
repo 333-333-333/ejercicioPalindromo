@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Scanner;
 
 public class ejercicioPalindromo {
@@ -8,30 +9,37 @@ public class ejercicioPalindromo {
         Scanner in = new Scanner(System.in);
         System.out.println("ingrese la palabra a evaluar");
         String palabra = in.next();
-        if (contieneNumeros(palabra)){
-            System.out.println("La palabra contiene numeros por lo tanto no se puede analizar");
-        }else {
-            leerEsPalindromo(regularizarPalabra(palabra));
-        }
+        leerEsPalindromo(palabra);
     }
     public static boolean esPalindromo (String palabra){
-        int letraInicio = 0;
-        int letraFinal = palabra.length()-1;
-        boolean interseccionLetras = false;
-        while (letraInicio<letraFinal && !interseccionLetras){
-            if (palabra.charAt(letraInicio)==palabra.charAt(letraFinal)){
-                letraInicio++;
-                letraFinal--;
+        try{
+            if (contieneNumeros(palabra)||palabra==""){
+                System.out.println("La palabra contiene numeros o no tiene caracteres por lo tanto no se puede analizar");
             }else {
-                interseccionLetras=true;
+                palabra = regularizarPalabra(palabra);
+                int letraInicio = 0;
+                int letraFinal = palabra.length() - 1;
+                boolean interseccionLetras = false;
+                while (letraInicio < letraFinal && !interseccionLetras) {
+                    if (palabra.charAt(letraInicio) == palabra.charAt(letraFinal)) {
+                        letraInicio++;
+                        letraFinal--;
+                    } else {
+                        interseccionLetras = true;
+                    }
+                }
+                return !interseccionLetras;
             }
+            return false;
+        }catch (ClassCastException e){
+            System.out.println("La palabra ingresada no es valida");
+            return false;
         }
-        return !interseccionLetras;
     }
     public static void leerEsPalindromo (String palabra){
         if (esPalindromo(palabra)){
             System.out.println("Es un palindromo");
-        }else {
+        }else if (!contieneNumeros(palabra)){
             System.out.println("No es un palindromo");
         }
     }
