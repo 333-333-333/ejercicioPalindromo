@@ -8,7 +8,11 @@ public class ejercicioPalindromo {
         Scanner in = new Scanner(System.in);
         System.out.println("ingrese la palabra a evaluar");
         String palabra = in.next();
-        leerEsPalindromo(palabra);
+        if (contieneNumeros(palabra)){
+            System.out.println("La palabra contiene numeros por lo tanto no se puede analizar");
+        }else {
+            leerEsPalindromo(regularizarPalabra(palabra));
+        }
     }
     public static boolean esPalindromo (String palabra){
         int letraInicio = 0;
@@ -30,5 +34,41 @@ public class ejercicioPalindromo {
         }else {
             System.out.println("No es un palindromo");
         }
+    }
+    public static String quitarEspacios(String palabra){
+        return palabra.replace(" ","");
+    }
+    public static String palabraEnMinusculas (String palabra){
+        return palabra.toLowerCase();
+    }
+    public static String regularizarPalabra (String palabra){
+        return quitarEspacios(palabraEnMinusculas(palabra));
+    }
+    public static boolean contieneNumeros (String palabra){
+        boolean tieneNumeros = false;
+        for (int i =0; i<palabra.length();i++){
+            if (palabra.charAt(i)=='1'){
+                tieneNumeros = true;
+            }else if (palabra.charAt(i)=='2'){
+                tieneNumeros = true;
+            }else if (palabra.charAt(i)=='3'){
+                tieneNumeros = true;
+            }else if (palabra.charAt(i)=='4'){
+                tieneNumeros = true;
+            }else if (palabra.charAt(i)=='5'){
+                tieneNumeros = true;
+            }else if (palabra.charAt(i)==6){
+                tieneNumeros = true;
+            }else if (palabra.charAt(i)=='7'){
+                tieneNumeros = true;
+            }else if (palabra.charAt(i)=='8'){
+                tieneNumeros = true;
+            }else if (palabra.charAt(i)=='9'){
+                tieneNumeros = true;
+            }else if (palabra.charAt(i)=='0'){
+                tieneNumeros = true;
+            }
+        }
+        return tieneNumeros;
     }
 }
