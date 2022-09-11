@@ -26,9 +26,9 @@ public class ejercicioPalindromo {
 
     }
 
-    public static boolean nuevoEsPalindromo(String texto) {
+    public static boolean nuevoEsPalindromo(String texto) throws RuntimeException {
 
-        String textoAComparar = texto.replaceAll(" ","").toLowerCase();
+        String textoAComparar = texto.replaceAll(" ","").replaceAll("[^A-Za-z]","").toLowerCase();
         StringBuilder retorno = new StringBuilder();
 
         try {
@@ -37,9 +37,11 @@ public class ejercicioPalindromo {
                 retorno.insert(0, c);
             }
             System.out.println(retorno);
-        } catch (ClassCastException e) {
+        }
+        catch (ClassCastException e) {
             System.out.println("El tipo de objeto no corresponde.");
-        } finally {
+        }
+        finally {
             return textoAComparar.equals(retorno.toString()) && retorno.length() > 1;
         }
     }

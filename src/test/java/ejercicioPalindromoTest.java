@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class ejercicioPalindromoTest {
 
     @Test
-    @DisplayName("Para probar esPalindromo, si la función esPalindromo arroja resultados acordes al parametro que se vaya a pasar.")
+    @DisplayName("Para probar esPalindromo con solo una letra.")
     void esPalindromoTestLetra() {
 
         String objetoPrueba = "h";
@@ -32,6 +32,24 @@ class ejercicioPalindromoTest {
 
     }
 
+
+    @Test
+    @DisplayName("Test es palindomo con números.")
+    void esPalindromoTestNumeros() {
+
+        String objetoPrueba = "22";
+        assertEquals(false , ejercicioPalindromo.esPalindromo(objetoPrueba));
+
+    }
+
+    @Test
+    @DisplayName("Test es palindomo con caracteres que no son letras !!.")
+    void esPalindromoTestCaseSimbolos() {
+
+        String objetoPrueba = "os!so";
+        assertEquals(false , ejercicioPalindromo.esPalindromo(objetoPrueba));
+
+    }
 
 
     @Test
