@@ -39,9 +39,9 @@ public class ejercicioPalindromo {
             System.out.println(retorno);
         } catch (ClassCastException e) {
             System.out.println("El tipo de objeto no corresponde.");
+        } finally {
+            return textoAComparar.equals(retorno.toString()) && retorno.length() > 1;
         }
-
-        return textoAComparar.equals(retorno.toString()) && retorno.length()>1;
     }
 
 }
